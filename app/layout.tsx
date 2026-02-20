@@ -25,7 +25,7 @@ export default function RootLayout({
               <header className="flex h-12 items-center border-b px-4">
                 <SidebarTrigger />
               </header>
-              {children}
+              <div className="p-8">{children}</div>
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>

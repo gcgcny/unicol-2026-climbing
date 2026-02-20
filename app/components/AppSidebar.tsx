@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { Info, CircleDollarSign, Heart, Church, HelpCircle, ChevronRight, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Switch } from '@/components/ui/switch';
@@ -41,6 +42,8 @@ export default function AppSidebar() {
   const pathname = usePathname();
   const isSacredPathwaysActive = pathname.startsWith('/sacred-pathways');
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <Sidebar>
@@ -122,7 +125,7 @@ export default function AppSidebar() {
           <span className="text-sm">Dark Mode</span>
           <Switch
             className="ml-auto"
-            checked={resolvedTheme === 'dark'}
+            checked={mounted && resolvedTheme === 'dark'}
             onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
           />
         </div>

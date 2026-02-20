@@ -3,7 +3,7 @@ import { InfoIcon } from "lucide-react";
 
 export default function PricingPlans() {
   return (
-    <main className="p-8 max-w-4xl mx-auto">
+    <main className="max-w-4xl mx-auto">
       <h1 className="text-5xl font-bold text-center mb-10">Pricing Plans</h1>
 
       <div className="grid grid-cols-2 gap-6 mb-6">

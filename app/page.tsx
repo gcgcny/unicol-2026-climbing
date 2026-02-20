@@ -38,7 +38,7 @@ const schedule = [
 
 export default function Home() {
   return (
-    <main className="max-w-3xl mx-auto px-4 py-10 space-y-14">
+    <main className="max-w-3xl mx-auto space-y-14">
 
       {/* Hero */}
       <section className="text-center space-y-4 pt-4">
