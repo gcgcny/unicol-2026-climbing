@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import UnderConstruction from "@/app/components/UnderConstruction";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -163,7 +162,6 @@ export default function SacredPathways() {
         </a>
         .
       </p>
-      <UnderConstruction />
     </main>
   );
 }
