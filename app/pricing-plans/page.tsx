@@ -13,8 +13,8 @@ export default function PricingPlans() {
             <CardTitle className="text-xl font-bold text-center">One Time Pass</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-5xl font-bold text-center mb-6">
-              <span className="text-3xl align-super">$</span>14.27
+            <p className="text-3xl sm:text-5xl font-bold text-center mb-6">
+              <span className="text-xl sm:text-3xl align-super">$</span>14.27
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>Purchase one pass at a time</li>
@@ -30,8 +30,8 @@ export default function PricingPlans() {
             <CardTitle className="text-xl font-bold text-center">8 Punch Pass</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-5xl font-bold text-center mb-6">
-              <span className="text-3xl align-super">$</span>114.16
+            <p className="text-3xl sm:text-5xl font-bold text-center mb-6">
+              <span className="text-xl sm:text-3xl align-super">$</span>114.16
             </p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>Prepay for the full season at the subsidized rate.</li>
