@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import AppSidebar from './components/AppSidebar';
+import SidebarFloatingTrigger from './components/SidebarFloatingTrigger';
 import { ThemeProvider } from './components/ThemeProvider';
 import './globals.css';
 
@@ -22,9 +23,7 @@ export default function RootLayout({
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-              <header className="flex h-12 items-center border-b px-4">
-                <SidebarTrigger />
-              </header>
+              <SidebarFloatingTrigger />
               <div className="p-8">{children}</div>
             </SidebarInset>
           </SidebarProvider>

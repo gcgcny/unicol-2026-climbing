@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Info, CircleDollarSign, Heart, Church, HelpCircle, ChevronRight, Moon } from 'lucide-react';
+import { Info, CircleDollarSign, Heart, Church, HelpCircle, ChevronRight, Moon, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Switch } from '@/components/ui/switch';
 import {
@@ -18,6 +18,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from '@/components/ui/sidebar';
 import {
   Collapsible,
@@ -59,9 +60,17 @@ export default function AppSidebar() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+  const { toggleSidebar } = useSidebar();
 
   return (
     <Sidebar>
+      <button
+        onClick={toggleSidebar}
+        className="absolute top-4 right-1 z-10 flex h-7 w-7 items-center justify-center rounded-md text-muted-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors"
+        aria-label="Close sidebar"
+      >
+        <X className="h-4 w-4" />
+      </button>
       <SidebarHeader className="px-4 py-4">
         <Link href="/" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
           <span className="text-lg">🏔️</span>
