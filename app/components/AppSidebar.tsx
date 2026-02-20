@@ -45,10 +45,10 @@ export default function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="px-4 py-4">
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
           <span className="text-lg">🏔️</span>
           <span className="font-extrabold text-base leading-tight">Unicol Climbing</span>
-        </div>
+        </Link>
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
