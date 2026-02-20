@@ -46,11 +46,10 @@ export default function Home() {
           Unicol Climbing Ministry
         </h1>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
-          A summer community for university & college students.
-          Come climb, connect, rest, and grow together.
+          A community for university & college students to climb, connect, rest, and grow together.
         </p>
         <p className="text-sm text-muted-foreground italic">
-          No climbing experience needed — this ministry isn&apos;t just for climbers.
+          No climbing experience needed, this ministry isn&apos;t just for climbers!
         </p>
       </section>
 
