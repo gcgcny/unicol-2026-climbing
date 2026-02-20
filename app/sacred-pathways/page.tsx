@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 const pathways = [
   {
@@ -103,39 +102,30 @@ export default function SacredPathways() {
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
         {pathways.map((pathway) => (
-          <div key={pathway.name} className="group [perspective:1000px] h-full">
-            <div className="relative h-full transition-transform duration-700 [transform-style:preserve-3d] lg:group-hover:[transform:rotateY(180deg)]">
-              {/* Front face */}
-              <div className="[backface-visibility:hidden] h-full">
-                <Card className="overflow-hidden pt-0 h-full flex flex-col">
-                  <div className="relative aspect-[4/3] w-full bg-[#f9f9f9] max-h-[240px]">
-                    <Image src={pathway.image} alt={pathway.name} fill className="object-contain py-3" />
-                  </div>
-                  <CardHeader>
-                    <CardTitle>{pathway.name}</CardTitle>
-                    <CardDescription>{pathway.subtitle}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex flex-col gap-3 flex-1">
-                    <p className="text-sm text-muted-foreground leading-relaxed">{pathway.description}</p>
-                    <p className="text-sm text-muted-foreground italic">&ldquo;{pathway.quote}&rdquo;</p>
-                    {/* Mobile/tablet only Learn More button */}
-                    <div className="mt-auto pt-3 lg:hidden">
-                      <Button asChild variant="secondary" className="w-full">
-                        <Link href={`/sacred-pathways/${pathway.slug}`}>Learn More</Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+          <Link
+            key={pathway.name}
+            href={`/sacred-pathways/${pathway.slug}`}
+            className="group block h-full"
+          >
+            <Card className="overflow-hidden pt-0 h-full flex flex-col transition-all duration-300 lg:hover:shadow-[0_0px_24px_-5px_rgb(0_0_0_/_0.1),_0_8px_10px_-6px_rgb(0_0_0_/_0.1)] lg:dark:hover:border-ring cursor-pointer">
+              <div className="relative aspect-[4/3] w-full bg-[#f9f9f9] max-h-[240px]">
+                <Image src={pathway.image} alt={pathway.name} fill className="object-contain py-3" />
               </div>
-              {/* Back face — desktop hover only */}
-              <Link
-                href={`/sacred-pathways/${pathway.slug}`}
-                className="hidden lg:flex absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-accent rounded-xl items-center justify-center"
-              >
-                <span className="text-primary font-semibold leading-none">Learn More</span>
-              </Link>
-            </div>
-          </div>
+              <CardHeader>
+                <CardTitle>{pathway.name}</CardTitle>
+                <CardDescription>{pathway.subtitle}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-3 flex-1">
+                <p className="text-sm text-muted-foreground leading-relaxed">{pathway.description}</p>
+                <p className="text-sm text-muted-foreground italic">&ldquo;{pathway.quote}&rdquo;</p>
+                <div className="mt-auto pt-3 lg:opacity-0 lg:group-hover:opacity-100 lg:transition-opacity lg:duration-200">
+                  <span className="flex items-center justify-center w-full h-9 rounded-md bg-secondary text-secondary-foreground text-sm font-medium px-4 py-2 pointer-events-none">
+                    Learn More
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
 
