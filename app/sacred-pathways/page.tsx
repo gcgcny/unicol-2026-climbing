@@ -121,7 +121,7 @@ export default function SacredPathways() {
                     <p className="text-sm text-muted-foreground italic">&ldquo;{pathway.quote}&rdquo;</p>
                     {/* Mobile/tablet only Learn More button */}
                     <div className="mt-auto pt-3 lg:hidden">
-                      <Button asChild className="w-full">
+                      <Button asChild variant="secondary" className="w-full">
                         <Link href={`/sacred-pathways/${pathway.slug}`}>Learn More</Link>
                       </Button>
                     </div>
