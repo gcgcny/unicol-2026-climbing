@@ -1,8 +1,66 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { InfoIcon } from "lucide-react";
+
 export default function PricingPlans() {
   return (
-    <main>
-      <h1>Pricing Plans</h1>
-      <p>Pricing information coming soon.</p>
+    <main className="p-8 max-w-4xl mx-auto">
+      <h1 className="text-5xl font-bold text-center mb-10">Pricing Plans</h1>
+
+      <div className="grid grid-cols-2 gap-6 mb-6">
+        {/* One Time Pass */}
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl font-bold text-center">One Time Pass</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-5xl font-bold text-center mb-6">
+              <span className="text-3xl align-super">$</span>14.27
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Purchase one pass at a time</li>
+              <li>Available for up to 8 passes per participant during the season.</li>
+              <li>Great if you prefer flexibility or are unsure how many sessions you&apos;ll attend.</li>
+            </ul>
+          </CardContent>
+        </Card>
+
+        {/* 8 Punch Pass */}
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-xl font-bold text-center">8 Punch Pass</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-5xl font-bold text-center mb-6">
+              <span className="text-3xl align-super">$</span>114.16
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Prepay for the full season at the subsidized rate.</li>
+              <li>Equivalent to $14.27 per pass.</li>
+              <li>Simplest option — no payments needed during the season.</li>
+              <li>Passes are still distributed one at a time as you attend.</li>
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Using Passes info card */}
+      <Card>
+        <CardContent className="pt-6">
+          <div className="flex items-start gap-3">
+            <InfoIcon className="mt-0.5 shrink-0" size={22} />
+            <div>
+              <h2 className="text-xl font-bold mb-3">Using Passes</h2>
+              <ul className="space-y-1.5 text-sm text-muted-foreground list-disc list-inside">
+                <li>Passes must be used with the leader who holds the pass because we are purchasing in bulk.</li>
+                <li>Up to 8 passes per participant at subsidized pricing.</li>
+                <li>Total subsidy of $50 per person.</li>
+                <li>Fair, consistent pricing whether you choose single passes or the punch.</li>
+                <li>You do not have to use the passes and subsidized pricing if you prefer to use your own pass or membership.</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </main>
   );
 }
