@@ -12,10 +12,10 @@ export default function SidebarFloatingTrigger() {
   return (
     <button
       onClick={toggleSidebar}
-      className="fixed bottom-3 left-3 md:bottom-auto md:top-4 md:left-4 z-50 flex h-9 w-9 items-center justify-center rounded-md border bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors"
+      className="fixed bottom-3 left-3 md:bottom-auto md:top-4 md:left-4 z-50 flex h-12 w-12 lg:h-9 lg:w-9 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors"
       aria-label="Open sidebar"
     >
-      <PanelLeftIcon className="h-4 w-4" />
+      <PanelLeftIcon className="h-5 w-5 lg:h-4 lg:w-4" />
     </button>
   );
 }
