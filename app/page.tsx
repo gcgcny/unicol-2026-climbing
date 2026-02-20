@@ -135,6 +135,10 @@ export default function Home() {
               <p className="text-xs text-muted-foreground mt-4 leading-relaxed">
                 Move freely between areas — just stay connected with your Unicol pod.
               </p>
+              <div className="mt-4 rounded-lg bg-muted px-4 py-3 text-sm">
+                <span className="font-semibold">Pods</span>
+                <span className="text-muted-foreground"> — small groups with a leader where you build friendships, look out for each other, and reach out to others.</span>
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -166,10 +170,6 @@ export default function Home() {
                 </li>
               ))}
             </ol>
-            <div className="mt-4 rounded-lg bg-muted px-4 py-3 text-sm">
-              <span className="font-semibold">Pods</span>
-              <span className="text-muted-foreground"> — small groups with a leader where you build friendships, look out for each other, and reach out to others.</span>
-            </div>
           </CardContent>
         </Card>
       </section>
