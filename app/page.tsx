@@ -43,7 +43,7 @@ export default function Home() {
       {/* Hero */}
       <section className="text-center space-y-4 pt-4">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-          Unicol Climbing Ministry
+          Climbing Ministry
         </h1>
         <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed">
           A community for university & college students to climb, connect, rest, and grow together.
