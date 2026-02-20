@@ -24,12 +24,12 @@ const faqs = [
   },
   {
     question: "Can I come late or leave early?",
-    answer: "Yes. Just check in with a leader so we know you're safe.",
+    answer: "Yes, while we encourage everyone to attend for the 7:30-9:30pm duration of the program, you are free to come and go as needed. Just check in with a leader so we know you're safe!",
   },
   {
     question: "What are pods?",
     answer:
-      "Small groups with a leader where you build friendships, look out for each other, and connect with others in the gym.",
+      "Small groups with a leader where you build friendships, look out for each other, and connect with others in the gym. There will be multiple pods operating in different areas throughout the gym: cafe/chill pod, auto-belay pod, bouldering pod, and workout/conditioning pod.",
   },
   {
     question: "Is this only for Christians?",
