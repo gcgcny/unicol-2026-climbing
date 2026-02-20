@@ -109,7 +109,7 @@ export default function SacredPathways() {
               <div className="[backface-visibility:hidden] h-full">
                 <Card className="overflow-hidden pt-0 h-full flex flex-col">
                   <div className="relative aspect-[4/3] w-full bg-[#f9f9f9] max-h-[240px]">
-                    <Image src={pathway.image} alt={pathway.name} fill className="object-contain" />
+                    <Image src={pathway.image} alt={pathway.name} fill className="object-contain py-3" />
                   </div>
                   <CardHeader>
                     <CardTitle>{pathway.name}</CardTitle>
