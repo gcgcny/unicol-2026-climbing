@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Info, CircleDollarSign, Heart, Church, HelpCircle, ChevronRight, Moon, X, Building2 } from 'lucide-react';
+import { Info, CircleDollarSign, Heart, Church, HelpCircle, ChevronRight, Moon, X, HeartHandshake } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Switch } from '@/components/ui/switch';
 import {
@@ -92,7 +92,7 @@ export default function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === '/about-unicol'}>
               <Link href="/about-unicol" onClick={handleNavClick}>
-                <Building2 />
+                <HeartHandshake />
                 About Unicol Ministry
               </Link>
             </SidebarMenuButton>
