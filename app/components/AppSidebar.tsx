@@ -60,7 +60,8 @@ export default function AppSidebar() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, isMobile, setOpenMobile } = useSidebar();
+  const handleNavClick = () => { if (isMobile) setOpenMobile(false); };
 
   return (
     <Sidebar>
@@ -72,7 +73,7 @@ export default function AppSidebar() {
         <X className="h-4 w-4" />
       </button>
       <SidebarHeader className="px-4 py-4">
-        <Link href="/" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+        <Link href="/" onClick={handleNavClick} className="flex items-center gap-2 hover:opacity-70 transition-opacity">
           <span className="text-lg">🏔️</span>
           <span className="font-extrabold text-base leading-tight">Unicol Climbing</span>
         </Link>
@@ -81,7 +82,7 @@ export default function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === '/'}>
-              <Link href="/">
+              <Link href="/" onClick={handleNavClick}>
                 <Info />
                 About Climbing Ministry
               </Link>
@@ -90,7 +91,7 @@ export default function AppSidebar() {
 
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === '/pricing-plans'}>
-              <Link href="/pricing-plans">
+              <Link href="/pricing-plans" onClick={handleNavClick}>
                 <CircleDollarSign />
                 Pricing Plans
               </Link>
@@ -100,7 +101,7 @@ export default function AppSidebar() {
           <Collapsible defaultOpen={isSacredPathwaysActive} className="group/collapsible">
             <SidebarMenuItem>
               <SidebarMenuButton asChild isActive={pathname === '/sacred-pathways'}>
-                <Link href="/sacred-pathways">
+                <Link href="/sacred-pathways" onClick={handleNavClick}>
                   <Heart />
                   Sacred Pathways
                 </Link>
@@ -115,7 +116,7 @@ export default function AppSidebar() {
                   {sacredPathways.map(({ label, href }) => (
                     <SidebarMenuSubItem key={href}>
                       <SidebarMenuSubButton asChild isActive={pathname === href}>
-                        <Link href={href}>{label}</Link>
+                        <Link href={href} onClick={handleNavClick}>{label}</Link>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}
@@ -127,7 +128,7 @@ export default function AppSidebar() {
           <Collapsible defaultOpen={isSpiritualDisciplinesActive} className="group/collapsible-disciplines">
             <SidebarMenuItem>
               <SidebarMenuButton asChild isActive={pathname === '/spiritual-disciplines'}>
-                <Link href="/spiritual-disciplines">
+                <Link href="/spiritual-disciplines" onClick={handleNavClick}>
                   <Church />
                   Spiritual Disciplines
                 </Link>
@@ -142,7 +143,7 @@ export default function AppSidebar() {
                   {spiritualDisciplines.map(({ label, href }) => (
                     <SidebarMenuSubItem key={href}>
                       <SidebarMenuSubButton asChild isActive={pathname === href}>
-                        <Link href={href}>{label}</Link>
+                        <Link href={href} onClick={handleNavClick}>{label}</Link>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}
@@ -153,7 +154,7 @@ export default function AppSidebar() {
 
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === '/faq'}>
-              <Link href="/faq">
+              <Link href="/faq" onClick={handleNavClick}>
                 <HelpCircle />
                 FAQ
               </Link>
