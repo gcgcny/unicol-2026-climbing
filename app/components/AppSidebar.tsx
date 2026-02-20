@@ -37,10 +37,25 @@ const sacredPathways = [
   { label: 'Intellectuals', href: '/sacred-pathways/intellectuals' },
 ];
 
+const spiritualDisciplines = [
+  { label: 'Meditation', href: '/spiritual-disciplines/meditation' },
+  { label: 'Prayer', href: '/spiritual-disciplines/prayer' },
+  { label: 'Study', href: '/spiritual-disciplines/study' },
+  { label: 'Simplicity', href: '/spiritual-disciplines/simplicity' },
+  { label: 'Silence & Solitude', href: '/spiritual-disciplines/silence-and-solitude' },
+  { label: 'Submission', href: '/spiritual-disciplines/submission' },
+  { label: 'Service', href: '/spiritual-disciplines/service' },
+  { label: 'Confession', href: '/spiritual-disciplines/confession' },
+  { label: 'Worship', href: '/spiritual-disciplines/worship' },
+  { label: 'Guidance', href: '/spiritual-disciplines/guidance' },
+  { label: 'Celebration', href: '/spiritual-disciplines/celebration' },
+];
+
 
 export default function AppSidebar() {
   const pathname = usePathname();
   const isSacredPathwaysActive = pathname.startsWith('/sacred-pathways');
+  const isSpiritualDisciplinesActive = pathname.startsWith('/spiritual-disciplines');
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -100,14 +115,32 @@ export default function AppSidebar() {
             </SidebarMenuItem>
           </Collapsible>
 
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild isActive={pathname === '/spiritual-disciplines'}>
-              <Link href="/spiritual-disciplines">
-                <Church />
-                Spiritual Disciplines
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          <Collapsible defaultOpen={isSpiritualDisciplinesActive} className="group/collapsible-disciplines">
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild isActive={pathname === '/spiritual-disciplines'}>
+                <Link href="/spiritual-disciplines">
+                  <Church />
+                  Spiritual Disciplines
+                </Link>
+              </SidebarMenuButton>
+              <CollapsibleTrigger asChild>
+                <SidebarMenuAction>
+                  <ChevronRight className="transition-transform group-data-[state=open]/collapsible-disciplines:rotate-90" />
+                </SidebarMenuAction>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <SidebarMenuSub>
+                  {spiritualDisciplines.map(({ label, href }) => (
+                    <SidebarMenuSubItem key={href}>
+                      <SidebarMenuSubButton asChild isActive={pathname === href}>
+                        <Link href={href}>{label}</Link>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  ))}
+                </SidebarMenuSub>
+              </CollapsibleContent>
+            </SidebarMenuItem>
+          </Collapsible>
 
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={pathname === '/faq'}>
