@@ -55,7 +55,7 @@ export default function AboutUnicolPage() {
           <h2 className="text-2xl font-bold">When We Meet</h2>
         </div>
         <Card>
-          <CardContent className="pt-6 space-y-4">
+          <CardContent className="space-y-4">
             <div className="space-y-1">
               <p className="font-semibold text-base">Fridays | 7:30–9:30 PM</p>
               <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
@@ -124,7 +124,7 @@ export default function AboutUnicolPage() {
           <h2 className="text-2xl font-bold">Summer Climbing Ministry</h2>
         </div>
         <Card className="border-primary/30 bg-primary/5">
-          <CardContent className="pt-6 space-y-4">
+          <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground leading-relaxed">
               From May to August, Unicol will host a <Link href="/" className="font-semibold text-foreground underline hover:text-primary transition-colors">Climbing Ministry</Link> on the <span className="font-semibold text-foreground">1st and 3rd Fridays</span> of each month. It is an active way to build friendships, practice faith, and grow together as a community.
             </p>
@@ -139,7 +139,7 @@ export default function AboutUnicolPage() {
           <h2 className="text-2xl font-bold">Who It&apos;s For</h2>
         </div>
         <Card className="bg-muted/40">
-          <CardContent className="pt-6">
+          <CardContent>
             <div className="flex items-start gap-3">
               <Users className="h-5 w-5 text-primary shrink-0 mt-0.5" />
               <p className="text-sm text-muted-foreground leading-relaxed">

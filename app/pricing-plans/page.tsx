@@ -45,7 +45,7 @@ export default function PricingPlans() {
 
       {/* Using Passes info card */}
       <Card>
-        <CardContent className="pt-6">
+        <CardContent>
           <div className="flex items-start gap-3">
             <InfoIcon className="mt-0.5 shrink-0" size={22} />
             <div>

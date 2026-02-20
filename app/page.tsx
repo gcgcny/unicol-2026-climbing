@@ -60,7 +60,7 @@ export default function Home() {
           <h2 className="text-2xl font-bold">About Us</h2>
         </div>
         <Card>
-          <CardContent className="pt-6">
+          <CardContent>
             <ul className="space-y-2">
               {aboutPoints.map(({ icon: Icon, text }) => (
                 <li key={text} className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
