@@ -2,10 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Info, CircleDollarSign, Heart, Church, HelpCircle, ChevronRight } from 'lucide-react';
+import { Info, CircleDollarSign, Heart, Church, HelpCircle, ChevronRight, Moon } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { Switch } from '@/components/ui/switch';
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -37,6 +40,7 @@ const sacredPathways = [
 export default function AppSidebar() {
   const pathname = usePathname();
   const isSacredPathwaysActive = pathname.startsWith('/sacred-pathways');
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
     <Sidebar>
@@ -112,6 +116,17 @@ export default function AppSidebar() {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarContent>
+      <SidebarFooter className="p-4">
+        <div className="flex items-center gap-2 px-2 py-1">
+          <Moon className="h-4 w-4" />
+          <span className="text-sm">Dark Mode</span>
+          <Switch
+            className="ml-auto"
+            checked={resolvedTheme === 'dark'}
+            onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+          />
+        </div>
+      </SidebarFooter>
     </Sidebar>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import AppSidebar from './components/AppSidebar';
+import { ThemeProvider } from './components/ThemeProvider';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -17,15 +18,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen bg-background antialiased">
-        <SidebarProvider>
-          <AppSidebar />
-          <SidebarInset>
-            <header className="flex h-12 items-center border-b px-4">
-              <SidebarTrigger />
-            </header>
-            {children}
-          </SidebarInset>
-        </SidebarProvider>
+        <ThemeProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <header className="flex h-12 items-center border-b px-4">
+                <SidebarTrigger />
+              </header>
+              {children}
+            </SidebarInset>
+          </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
