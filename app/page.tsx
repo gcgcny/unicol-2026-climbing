@@ -63,7 +63,7 @@ export default function Home() {
           <CardContent>
             <ul className="space-y-2">
               {aboutPoints.map(({ icon: Icon, text }) => (
-                <li key={text} className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
+                <li key={text} className="flex items-start gap-2 text-base text-muted-foreground leading-relaxed">
                   <Icon className="h-4 w-4 text-primary shrink-0 mt-0.5" />
                   <span>{text}</span>
                 </li>
@@ -125,7 +125,7 @@ export default function Home() {
             <CardContent>
               <ul className="space-y-2">
                 {gymActivities.map(({ icon: Icon, label }) => (
-                  <li key={label} className="flex items-center gap-2 text-sm">
+                  <li key={label} className="flex items-center gap-2 text-base">
                     <Icon className="h-4 w-4 text-muted-foreground shrink-0" />
                     <span>{label}</span>
                   </li>
@@ -163,7 +163,7 @@ export default function Home() {
             <p className="font-semibold text-base mb-3">Schedule</p>
             <ol className="space-y-3">
               {schedule.map(({ time, label }) => (
-                <li key={time} className="flex gap-3 text-sm">
+                <li key={time} className="flex gap-3 text-base">
                   <span className="font-semibold text-primary whitespace-nowrap">{time}</span>
                   <span className="text-muted-foreground">{label}</span>
                 </li>

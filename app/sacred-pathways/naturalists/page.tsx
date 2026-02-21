@@ -179,13 +179,25 @@ export default function Naturalists() {
         <div className="space-y-5">
           {quotes.map((q, i) => (
             <div key={i}>
-              <p className="text-sm leading-relaxed text-muted-foreground italic">&ldquo;{q.text}&rdquo;</p>
+              <p className="text-base leading-relaxed text-muted-foreground italic">&ldquo;{q.text}&rdquo;</p>
               {q.ref && (
                 <p className="text-xs text-muted-foreground/70 mt-1">{q.ref}</p>
               )}
             </div>
           ))}
         </div>
+        <p className="text-sm text-muted-foreground">
+          Source:{" "}
+          <a
+            href="https://garythomas.com/wp-content/uploads/2013/03/sacred_pathways_sample_chapter.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground transition-colors"
+          >
+            Sacred Pathways by Gary Thomas
+          </a>
+        </p>
+        <hr className="border-border" />
       </section>
 
       {/* Suggested Activities */}
@@ -194,18 +206,27 @@ export default function Naturalists() {
           <ListChecks className="h-5 w-5 text-primary" />
           <h2 className="text-2xl font-bold">Suggested Activities</h2>
         </div>
-        <Card>
-          <CardContent>
-            <ul className="space-y-3">
-              {activities.map((activity, i) => (
-                <li key={i} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
-                  <span className="text-primary shrink-0">•</span>
-                  <span>{activity}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Card>
+            <CardContent>
+              <ul className="space-y-3">
+                {activities.map((activity, i) => (
+                  <li key={i} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
+                    <span className="text-primary shrink-0">•</span>
+                    <span>{activity}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+          <div className="rounded-xl border overflow-hidden min-h-[180px]">
+            <img
+              src="https://images.unsplash.com/photo-1765150520317-ed24016ea160?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Nature"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
       </section>
 
       {/* Scriptures to Ponder */}
@@ -240,7 +261,7 @@ export default function Naturalists() {
           <CardContent>
             <ol className="space-y-4">
               {reflectionQuestions.map((q, i) => (
-                <li key={i} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
+                <li key={i} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
                   <span className="font-semibold text-primary shrink-0">{i + 1}.</span>
                   <span>{q}</span>
                 </li>
@@ -294,9 +315,8 @@ export default function Naturalists() {
             rel="noopener noreferrer"
             className="underline hover:text-foreground transition-colors"
           >
-            Sacred Pathways — Gary Thomas
+            Study Guide by Adalee Lewis
           </a>
-          {" "}| Study Guide by Adalee Lewis
         </p>
       </section>
 
