@@ -142,6 +142,63 @@ const scriptures = [
   },
 ];
 
+const romans = {
+  ref: "Romans 1:18–23",
+  verses: [
+    { v: 18, text: "The wrath of God is being revealed from heaven against all the godlessness and wickedness of people, who suppress the truth by their wickedness," },
+    { v: 19, text: "since what may be known about God is plain to them, because God has made it plain to them." },
+    { v: 20, text: "For since the creation of the world God's invisible qualities—his eternal power and divine nature—have been clearly seen, being understood from what has been made, so that people are without excuse." },
+    { v: 21, text: "For although they knew God, they neither glorified him as God nor gave thanks to him, but their thinking became futile and their foolish hearts were darkened." },
+    { v: 22, text: "Although they claimed to be wise, they became fools" },
+    { v: 23, text: "and exchanged the glory of the immortal God for images made to look like a mortal human being and birds and animals and reptiles." },
+  ],
+  studyQuestions: [
+    {
+      question: "What is knowable about God from creation?",
+      points: [
+        "Wrath of God (v. 18)",
+        "God's invisible qualities: eternal power and divine nature (v. 19)",
+      ],
+    },
+    {
+      question: "Who did God reveal Himself to?",
+      points: [
+        "Godless and wicked people (v. 18)",
+        "People in general (v. 20)",
+      ],
+    },
+    {
+      question: "How does God make Himself known?",
+      points: [
+        "God made it plain (v. 19)",
+        "God's invisible qualities are visible from what has been made (v. 20)",
+        "God's invisible qualities are known since the creation of the world (v. 20)",
+      ],
+    },
+    {
+      question: "What does God expect from those who know Him?",
+      points: [
+        "a. Know God → glorify God → give thanks to God (v. 21)",
+        "b. NOT to know God → glorify images of creatures (v. 23)",
+        "All people have no excuse for choosing (b) instead of (a) above",
+      ],
+    },
+    {
+      question: 'What might "creation of the world" include?',
+      points: [
+        "Literally everything created (v. 20)",
+      ],
+    },
+    {
+      question: "How might people today understand God's eternal power or divinity through creation?",
+      points: [
+        "Thinking about it (v. 21).",
+        "Today there are many ways to explore the world, including sciences, philosophies, arts, what the Bible says about it, etc.",
+      ],
+    },
+  ],
+};
+
 const reflectionQuestions = [
   "Where and when do you feel closest to God?",
   "How is worship different for you when you are inside listening to speakers, etc. and outside enjoying nature?",
@@ -219,11 +276,11 @@ export default function Naturalists() {
               </ul>
             </CardContent>
           </Card>
-          <div className="rounded-xl border overflow-hidden min-h-[180px]">
+          <div className="rounded-xl border overflow-hidden relative">
             <img
               src="https://images.unsplash.com/photo-1765150520317-ed24016ea160?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Nature"
-              className="h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         </div>
@@ -235,6 +292,38 @@ export default function Naturalists() {
           <BookOpen className="h-5 w-5 text-primary" />
           <h2 className="text-2xl font-bold">Scriptures to Reflect On</h2>
         </div>
+        <Card>
+          <CardContent className="space-y-4">
+            <p className="font-semibold text-sm">{romans.ref}</p>
+            <div className="space-y-3">
+              {romans.verses.map(({ v, text }) => (
+                <p key={v} className="text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-semibold text-primary mr-2">{v}</span>
+                  {text}
+                </p>
+              ))}
+              <p className="text-xs text-muted-foreground/60 pt-2">NIV — New International Version</p>
+            </div>
+            <div className="space-y-4 pt-2 border-t">
+              <p className="font-semibold text-sm text-foreground">Study Questions</p>
+              <ol className="space-y-4">
+                {romans.studyQuestions.map((sq, i) => (
+                  <li key={i} className="space-y-1">
+                    <p className="text-sm font-medium text-foreground leading-snug">{sq.question}</p>
+                    <ul className="space-y-0.5 pl-3">
+                      {sq.points.map((point, j) => (
+                        <li key={j} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
+                          <span className="text-primary shrink-0">–</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </CardContent>
+        </Card>
         <div className="flex flex-wrap gap-4">
           {scriptures.map((s) => (
             <Button
