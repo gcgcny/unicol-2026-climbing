@@ -53,9 +53,9 @@ const notableNaturalists = [
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvNaLzkNelA7QEVLsj94qEmvmeiKRC2vsC_SdxOux-IgKxcaP5wkCXJGhToahDCd-GF0XGPa9IbQhfBJGftTub9MXtlKRuFOptrCqzw&s=10",
   },
   {
-    name: "Bernard of Clairvaux",
-    subtitle: "Cistercian abbot & mystical theologian",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Tcguas5uja_BcaLYSKoSnmjzlUreYD3EPSXPs6cZDCCn6JtR4qhabrgFyzvI1J1_iK1l_1j_ej_3fSp9YXQ-8OAx4DBZ7Tvan5XpDcw&s=10",
+    name: "Antoni Gaudí",
+    subtitle: "Catalan architect & Designer",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWhEHgj1ouIFpQ71p-7c8aXW8B5ExyIqisNwcR7qQGweAxZY_il3PAggnKVGUDT3EPWM-8rGe45c0fx0DjKJRDcEwrT2_MR4Bkbgrk1Q&s=10",
   },
   {
     name: "Charles Haddon Spurgeon",
@@ -229,11 +229,11 @@ export default function Naturalists() {
         </div>
       </section>
 
-      {/* Scriptures to Ponder */}
+      {/* Scriptures to Reflect On */}
       <section className="space-y-4">
         <div className="flex items-center gap-2">
           <BookOpen className="h-5 w-5 text-primary" />
-          <h2 className="text-2xl font-bold">Scriptures to Ponder</h2>
+          <h2 className="text-2xl font-bold">Scriptures to Reflect On</h2>
         </div>
         <div className="flex flex-wrap gap-4">
           {scriptures.map((s) => (
