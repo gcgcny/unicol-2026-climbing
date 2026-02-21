@@ -322,6 +322,12 @@ export default function Naturalists() {
                 ))}
               </ol>
             </div>
+            <div className="rounded-xl border bg-accent px-4 py-4">
+              <p className="text-sm leading-relaxed text-accent-foreground">
+                <span className="font-semibold">Takeaway:</span>{" "}
+                God's self-revelation through nature is called general revelation. General revelation isn't enough for saving faith because it doesn't include the good news of Jesus, but it's enough to know, glorify, and thank God. Naturalists are people who especially love to love God through nature because they enjoy knowing, glorifying, and thanking God through nature.
+              </p>
+            </div>
           </CardContent>
         </Card>
         <div className="flex flex-wrap gap-4">
