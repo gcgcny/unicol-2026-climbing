@@ -2,8 +2,6 @@ import Link from "next/link";
 import {
   Card,
   CardContent,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   Users,
@@ -98,21 +96,20 @@ export default function AboutUnicolPage() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           {terms.map(({ label, title, description, href }) => (
-            <Card key={label} className="flex flex-col">
-              <CardHeader>
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">{label}</p>
-                <CardTitle className="text-base">{title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col flex-1 gap-4">
-                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{description}</p>
-                <Link
-                  href={href}
-                  className="flex items-center justify-center w-full h-9 rounded-md bg-secondary text-secondary-foreground text-sm font-medium px-4 py-2 hover:bg-secondary/80 transition-colors"
-                >
-                  Learn More
-                </Link>
-              </CardContent>
-            </Card>
+            <Link key={label} href={href} className="group block h-full">
+              <div className="bg-card text-card-foreground gap-6 rounded-xl border py-6 shadow-sm flex flex-col h-full transition-all duration-300 lg:hover:shadow-[0_0px_24px_-5px_rgb(0_0_0_/_0.1),_0_8px_10px_-6px_rgb(0_0_0_/_0.1)] lg:dark:hover:border-ring cursor-pointer">
+                <div className="flex flex-col gap-1.5 px-6">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-primary">{label}</p>
+                  <div className="font-semibold text-base">{title}</div>
+                </div>
+                <div className="px-6 flex flex-col flex-1 gap-4">
+                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">{description}</p>
+                  <div className="lg:opacity-0 lg:group-hover:opacity-100 lg:transition-opacity lg:duration-200">
+                    <span className="flex items-center justify-center w-full h-9 rounded-md bg-secondary text-secondary-foreground text-sm font-medium px-4 py-2 pointer-events-none">Learn More</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
