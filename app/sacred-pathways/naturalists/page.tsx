@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Book, BookOpen, BookOpenText, Leaf, ListChecks, Users, HelpCircle } from "lucide-react";
+import { Book, BookOpen, BookOpenText, Leaf, ListChecks, Users, HelpCircle, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -327,8 +327,14 @@ export default function Naturalists() {
         onOpenChange={(open: boolean) => { if (!open) setSelectedScripture(null); }}
       >
         <DrawerContent className="fixed inset-y-0 right-0 left-auto w-full sm:w-[400px] rounded-none rounded-l-[10px] mt-0 flex flex-col">
-          <DrawerHeader>
+          <DrawerHeader className="flex flex-row items-center justify-between">
             <DrawerTitle>{selectedScripture?.ref}</DrawerTitle>
+            <button
+              onClick={() => setSelectedScripture(null)}
+              className="sm:hidden rounded-sm p-1 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
           </DrawerHeader>
           <div className="no-scrollbar overflow-y-auto px-4 pb-4 space-y-4">
             {selectedScripture?.verses.map(({ v, text }) => (
