@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Book, BookOpen, BookOpenText, Leaf, ListChecks, Users, HelpCircle, X } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,31 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
+
+function FadeIn({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} ${className ?? ""}`}
+    >
+      {children}
+    </div>
+  );
+}
 
 const quotes = [
   {
@@ -229,163 +254,176 @@ export default function Naturalists() {
       </section>
 
       {/* Description / Quotes */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <Leaf className="h-5 w-5 text-primary" />
-          <h2 className="text-2xl font-bold">Description</h2>
-        </div>
-        <div className="space-y-5">
-          {(showAllQuotes ? quotes : quotes.slice(0, 1)).map((q, i) => (
-            <div key={i}>
-              <p className="text-base leading-relaxed text-muted-foreground italic">&ldquo;{q.text}&rdquo;</p>
-              {q.ref && (
-                <p className="text-xs text-muted-foreground/70 mt-1">{q.ref}</p>
-              )}
-            </div>
-          ))}
-          {!showAllQuotes && (
-            <Button variant="ghost" size="sm" onClick={() => setShowAllQuotes(true)} className="text-muted-foreground">
-              Read More
-            </Button>
-          )}
-        </div>
-      </section>
+      <FadeIn>
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <Leaf className="h-5 w-5 text-primary" />
+            <h2 className="text-2xl font-bold">Description</h2>
+          </div>
+          <div className="space-y-5">
+            {(showAllQuotes ? quotes : quotes.slice(0, 1)).map((q, i) => (
+              <div key={i}>
+                <p className="text-base leading-relaxed text-muted-foreground italic">&ldquo;{q.text}&rdquo;</p>
+                {q.ref && (
+                  <p className="text-xs text-muted-foreground/70 mt-1">{q.ref}</p>
+                )}
+              </div>
+            ))}
+            {!showAllQuotes && (
+              <div className="flex justify-center">
+                <Button variant="ghost" size="sm" onClick={() => setShowAllQuotes(true)} className="text-muted-foreground">
+                  Read More
+                </Button>
+              </div>
+            )}
+          </div>
+        </section>
+      </FadeIn>
 
       {/* Suggested Activities */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <ListChecks className="h-5 w-5 text-primary" />
-          <h2 className="text-2xl font-bold">Suggested Activities</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Card>
-            <CardContent>
-              <ul className="space-y-3">
-                {activities.map((activity, i) => (
-                  <li key={i} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
-                    <span className="text-primary shrink-0">•</span>
-                    <span>{activity}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-          <div className="rounded-xl border overflow-hidden relative">
-            <img
-              src="https://images.unsplash.com/photo-1765150520317-ed24016ea160?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Nature"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
+      <FadeIn>
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <ListChecks className="h-5 w-5 text-primary" />
+            <h2 className="text-2xl font-bold">Suggested Activities</h2>
           </div>
-        </div>
-      </section>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Card>
+              <CardContent>
+                <ul className="space-y-3">
+                  {activities.map((activity, i) => (
+                    <li key={i} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
+                      <span className="text-primary shrink-0">•</span>
+                      <span>{activity}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+            <div className="rounded-xl border overflow-hidden relative">
+              <img
+                src="https://images.unsplash.com/photo-1765150520317-ed24016ea160?q=80&w=2048&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Nature"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+      </FadeIn>
 
       {/* Scriptures to Reflect On */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <BookOpen className="h-5 w-5 text-primary" />
-          <h2 className="text-2xl font-bold">Scriptures to Reflect On</h2>
-        </div>
-        <Card>
-          <CardContent className="space-y-4">
-            <p className="font-semibold text-sm">{romans.ref}</p>
-            <div className="space-y-3">
-              {romans.verses.map(({ v, text }) => (
-                <p key={v} className="text-sm leading-relaxed text-muted-foreground">
-                  <span className="font-semibold text-primary mr-2">{v}</span>
-                  {text}
+      <FadeIn>
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-primary" />
+            <h2 className="text-2xl font-bold">Scriptures to Reflect On</h2>
+          </div>
+          <Card>
+            <CardContent className="space-y-4">
+              <p className="font-semibold text-sm">{romans.ref}</p>
+              <div className="space-y-3">
+                {romans.verses.map(({ v, text }) => (
+                  <p key={v} className="text-sm leading-relaxed text-muted-foreground">
+                    <span className="font-semibold text-primary mr-2">{v}</span>
+                    {text}
+                  </p>
+                ))}
+                <p className="text-xs text-muted-foreground/60 pt-2">NIV — New International Version</p>
+              </div>
+              <div className="space-y-4 pt-2 border-t">
+                <p className="font-semibold text-sm text-foreground">Study Questions</p>
+                <ol className="space-y-4">
+                  {romans.studyQuestions.map((sq, i) => (
+                    <li key={i} className="space-y-1">
+                      <p className="text-sm font-medium text-foreground leading-snug">{sq.question}</p>
+                      <ul className="space-y-0.5 pl-3">
+                        {sq.points.map((point, j) => (
+                          <li key={j} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
+                            <span className="text-primary shrink-0">–</span>
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+              <div className="rounded-xl bg-accent px-6 py-5">
+                <p className="text-sm leading-relaxed text-accent-foreground">
+                  <span className="font-semibold">Takeaway:</span>{" "}
+                  God's self-revelation through nature is called general revelation. General revelation isn't enough for saving faith because it doesn't include the good news of Jesus, but it's enough to know, glorify, and thank God. Naturalists are people who especially love to love God through nature because they enjoy knowing, glorifying, and thanking God through nature.
                 </p>
-              ))}
-              <p className="text-xs text-muted-foreground/60 pt-2">NIV — New International Version</p>
-            </div>
-            <div className="space-y-4 pt-2 border-t">
-              <p className="font-semibold text-sm text-foreground">Study Questions</p>
+              </div>
+            </CardContent>
+          </Card>
+          <div className="flex flex-wrap gap-4">
+            {scriptures.map((s) => (
+              <Button
+                key={s.ref}
+                variant="secondary"
+                onClick={() => setSelectedScripture(s)}
+                className="group"
+              >
+                <Book className="h-4 w-4 shrink-0 group-hover:hidden" />
+                <BookOpenText className="h-4 w-4 shrink-0 hidden group-hover:block" />
+                {s.ref}
+              </Button>
+            ))}
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* Reflection Questions */}
+      <FadeIn>
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <HelpCircle className="h-5 w-5 text-primary" />
+            <h2 className="text-2xl font-bold">Reflection Questions</h2>
+          </div>
+          <Card>
+            <CardContent>
               <ol className="space-y-4">
-                {romans.studyQuestions.map((sq, i) => (
-                  <li key={i} className="space-y-1">
-                    <p className="text-sm font-medium text-foreground leading-snug">{sq.question}</p>
-                    <ul className="space-y-0.5 pl-3">
-                      {sq.points.map((point, j) => (
-                        <li key={j} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
-                          <span className="text-primary shrink-0">–</span>
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {reflectionQuestions.map((q, i) => (
+                  <li key={i} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
+                    <span className="font-semibold text-primary shrink-0">{i + 1}.</span>
+                    <span>{q}</span>
                   </li>
                 ))}
               </ol>
-            </div>
-            <div className="rounded-xl bg-accent px-6 py-5">
-              <p className="text-sm leading-relaxed text-accent-foreground">
-                <span className="font-semibold">Takeaway:</span>{" "}
-                God's self-revelation through nature is called general revelation. General revelation isn't enough for saving faith because it doesn't include the good news of Jesus, but it's enough to know, glorify, and thank God. Naturalists are people who especially love to love God through nature because they enjoy knowing, glorifying, and thanking God through nature.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-        <div className="flex flex-wrap gap-4">
-          {scriptures.map((s) => (
-            <Button
-              key={s.ref}
-              variant="secondary"
-              onClick={() => setSelectedScripture(s)}
-              className="group"
-            >
-              <Book className="h-4 w-4 shrink-0 group-hover:hidden" />
-              <BookOpenText className="h-4 w-4 shrink-0 hidden group-hover:block" />
-              {s.ref}
-            </Button>
-          ))}
-        </div>
-      </section>
-
-      {/* Reflection Questions */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <HelpCircle className="h-5 w-5 text-primary" />
-          <h2 className="text-2xl font-bold">Reflection Questions</h2>
-        </div>
-        <Card>
-          <CardContent>
-            <ol className="space-y-4">
-              {reflectionQuestions.map((q, i) => (
-                <li key={i} className="flex gap-3 text-base text-muted-foreground leading-relaxed">
-                  <span className="font-semibold text-primary shrink-0">{i + 1}.</span>
-                  <span>{q}</span>
-                </li>
-              ))}
-            </ol>
-          </CardContent>
-        </Card>
-      </section>
+            </CardContent>
+          </Card>
+        </section>
+      </FadeIn>
 
       {/* Well Known Naturalists */}
-      <section className="space-y-4">
-        <div className="flex items-center gap-2">
-          <Users className="h-5 w-5 text-primary" />
-          <h2 className="text-2xl font-bold">Well Known Naturalists</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {notableNaturalists.map((person) => (
-            <div key={person.name} className="flex items-center gap-3 rounded-xl border bg-card pr-3 shadow-sm h-[72px]">
-              <div className="shrink-0 self-stretch aspect-square rounded-l-xl overflow-hidden bg-muted flex items-center justify-center">
-                {person.image ? (
-                  <img src={person.image} alt={person.name} className="h-full w-full object-cover object-top" />
-                ) : (
-                  <Leaf className="h-7 w-7 text-muted-foreground/40" />
-                )}
+      <FadeIn>
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <Users className="h-5 w-5 text-primary" />
+            <h2 className="text-2xl font-bold">Well Known Naturalists</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {notableNaturalists.map((person) => (
+              <div key={person.name} className="flex items-center gap-3 rounded-xl border bg-card pr-3 shadow-sm h-[72px]">
+                <div className="shrink-0 self-stretch aspect-square rounded-l-xl overflow-hidden bg-muted flex items-center justify-center">
+                  {person.image ? (
+                    <img src={person.image} alt={person.name} className="h-full w-full object-cover object-top" />
+                  ) : (
+                    <Leaf className="h-7 w-7 text-muted-foreground/40" />
+                  )}
+                </div>
+                <div>
+                  <p className="font-semibold text-sm">{person.name}</p>
+                  <p className="text-xs text-muted-foreground">{person.subtitle}</p>
+                </div>
               </div>
-              <div>
-                <p className="font-semibold text-sm">{person.name}</p>
-                <p className="text-xs text-muted-foreground">{person.subtitle}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      </FadeIn>
 
       {/* Resources + Source */}
+      <FadeIn>
       <section className="border-t pt-6 pb-4 space-y-3">
         <p className="text-sm text-muted-foreground font-medium">Resources</p>
         <ul className="space-y-2">
@@ -420,6 +458,7 @@ export default function Naturalists() {
           </li>
         </ul>
       </section>
+      </FadeIn>
 
       {/* Scripture Drawer */}
       <Drawer
