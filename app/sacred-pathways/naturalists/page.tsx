@@ -14,7 +14,7 @@ import {
 const quotes = [
   {
     text: 'Where we worship can have a profound impact on the quality of our worship. The naturalist seeks to leave the formal architecture and the padded pews to enter an entirely new \u201ccathedral\u201d, a place that God himself has built: the out-of-doors.',
-    ref: "(36)",
+    ref: "(36, from Sacred Pathways by Gary Thomas)",
   },
   {
     text: '\u2026the Bible is meant to be read outside\u2026The phrase \u201criver of life\u201d seems quaint when the words are projected up on a wall; but its power is nearly overwhelming when you stand by a swiftly flowing river.',
@@ -217,6 +217,7 @@ const resources = [
 
 export default function Naturalists() {
   const [selectedScripture, setSelectedScripture] = useState<typeof scriptures[number] | null>(null);
+  const [showAllQuotes, setShowAllQuotes] = useState(false);
 
   return (
     <main className="max-w-3xl mx-auto space-y-14">
@@ -234,7 +235,7 @@ export default function Naturalists() {
           <h2 className="text-2xl font-bold">Description</h2>
         </div>
         <div className="space-y-5">
-          {quotes.map((q, i) => (
+          {(showAllQuotes ? quotes : quotes.slice(0, 1)).map((q, i) => (
             <div key={i}>
               <p className="text-base leading-relaxed text-muted-foreground italic">&ldquo;{q.text}&rdquo;</p>
               {q.ref && (
@@ -242,19 +243,12 @@ export default function Naturalists() {
               )}
             </div>
           ))}
+          {!showAllQuotes && (
+            <Button variant="ghost" size="sm" onClick={() => setShowAllQuotes(true)} className="text-muted-foreground">
+              Read More
+            </Button>
+          )}
         </div>
-        <p className="text-sm text-muted-foreground">
-          Source:{" "}
-          <a
-            href="https://garythomas.com/wp-content/uploads/2013/03/sacred_pathways_sample_chapter.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground transition-colors"
-          >
-            Sacred Pathways by Gary Thomas
-          </a>
-        </p>
-        <hr className="border-border" />
       </section>
 
       {/* Suggested Activities */}
@@ -322,7 +316,7 @@ export default function Naturalists() {
                 ))}
               </ol>
             </div>
-            <div className="rounded-xl border bg-accent px-4 py-4">
+            <div className="rounded-xl bg-accent px-6 py-5">
               <p className="text-sm leading-relaxed text-accent-foreground">
                 <span className="font-semibold">Takeaway:</span>{" "}
                 God's self-revelation through nature is called general revelation. General revelation isn't enough for saving faith because it doesn't include the good news of Jesus, but it's enough to know, glorify, and thank God. Naturalists are people who especially love to love God through nature because they enjoy knowing, glorifying, and thanking God through nature.
@@ -402,17 +396,29 @@ export default function Naturalists() {
           ))}
         </ul>
         <hr className="border-border" />
-        <p className="text-sm text-muted-foreground">
-          Source:{" "}
-          <a
-            href="https://www.garythomas.com/wp-content/uploads/2013/02/sacredpathways.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground transition-colors"
-          >
-            Study Guide by Adalee Lewis
-          </a>
-        </p>
+        <p className="text-sm text-muted-foreground font-medium">Sources</p>
+        <ul className="space-y-2">
+          <li className="text-sm text-muted-foreground leading-relaxed">
+            <a
+              href="https://www.garythomas.com/wp-content/uploads/2013/02/sacredpathways.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-foreground transition-colors"
+            >
+              Study Guide by Adalee Lewis
+            </a>
+          </li>
+          <li className="text-sm text-muted-foreground leading-relaxed">
+            <a
+              href="https://garythomas.com/wp-content/uploads/2013/03/sacred_pathways_sample_chapter.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-foreground transition-colors"
+            >
+              Sacred Pathways by Gary Thomas
+            </a>
+          </li>
+        </ul>
       </section>
 
       {/* Scripture Drawer */}
