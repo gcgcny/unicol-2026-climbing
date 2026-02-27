@@ -1,6 +1,6 @@
 'use client';
 
-import { PanelLeftIcon } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { useSidebar } from '@/components/ui/sidebar';
 
 export default function SidebarFloatingTrigger() {
@@ -12,10 +12,10 @@ export default function SidebarFloatingTrigger() {
   return (
     <button
       onClick={toggleSidebar}
-      className="fixed bottom-3 left-3 md:bottom-auto md:top-4 md:left-4 z-50 flex h-12 w-12 lg:h-9 lg:w-9 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors"
+      className="fixed top-3 left-3 md:top-4 md:left-4 z-50 flex h-12 w-12 md:h-9 md:w-9 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors"
       aria-label="Open sidebar"
     >
-      <PanelLeftIcon className="h-5 w-5 lg:h-4 lg:w-4" />
+      <Menu className="h-6 w-6 md:h-4 md:w-4" />
     </button>
   );
 }
