@@ -425,7 +425,7 @@ const reflectionQuestions = [
 
 const resources = [
   "Whitfield and Stoddart, Hearing, Taste and Smell. Pathways of Perception. Nouwen, Henri J., Return of the Prodigal Son.",
-  "Lorem Ipsum",
+  
 ];
 
 const generalPassages = scriptures.slice(0, 11);
