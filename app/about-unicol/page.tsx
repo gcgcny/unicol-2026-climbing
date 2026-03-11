@@ -120,12 +120,21 @@ export default function AboutUnicolPage() {
           <Mountain className="h-5 w-5 text-primary" />
           <h2 className="text-2xl font-bold">Summer Climbing Ministry</h2>
         </div>
-        <Card className="border-primary/30 bg-primary/5">
-          <CardContent className="space-y-4">
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              From May to August, Unicol will host a <Link href="/" className="font-semibold text-foreground underline hover:text-primary transition-colors">Climbing Ministry</Link> on the <span className="font-semibold text-foreground">1st and 3rd Fridays</span> of each month. It is an active way to build friendships, practice faith, and grow together as a community.
-            </p>
-          </CardContent>
+        <Card className="border-primary/30 bg-primary/5 overflow-hidden py-0">
+          <div className="flex">
+            <div className="w-1/2 py-12 px-6">
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                From May to August, Unicol will host a <Link href="/" className="font-semibold text-foreground underline hover:text-primary transition-colors">Climbing Ministry</Link> on the <span className="font-semibold text-foreground">1st and 3rd Fridays</span> of each month. It is an active way to build friendships, practice faith, and grow together as a community.
+              </p>
+            </div>
+            <div className="w-1/2 relative overflow-hidden">
+              <img
+                src="https://hubclimbing.com/wp-content/uploads/2022/11/facility-1-1100x734.jpg"
+                alt="Climbing wall at Hub Climbing"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
         </Card>
       </section>
 
